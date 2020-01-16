@@ -1,30 +1,11 @@
+import 'questions.dart';
 
-# Quizzler ❓
+class QuizBrain{
 
-## Our Goal
+  int _questionNumber = 0 ;
 
-In this tutorial we will be reviewing Stateful and Stateless Widgets as well as learning about the fundamental building blocks of Object Oriented Programming (OOP) - Classes and Objects. 
-
-
-## What you will create
-
-We’re going to make a quiz app that tests your general knowledge. As one of the most popular types of apps on the app stores, you can create your own quiz for other people to enjoy!
-
-
-## What you will learn
-
-- Modularising your code into separate classes.
-- Dart classes and objects.
-- Using class constructors.
-- Extracting Widgets to refactor your code.
-- private and public modifiers in Dart.
-- How to use Dart lists.
-- The difference between var, const and final.
-
-## Code Snippet for Project
-
-```
-Question('Some cats are actually allergic to humans', true),
+  List <Question> _questionBank = [
+    Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
     Question('A slug\'s blood is green.', true),
@@ -50,4 +31,53 @@ Question('Some cats are actually allergic to humans', true),
         'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         true),
 
-```
+  ];
+
+  void nextQuestion(){
+    if (_questionNumber < _questionBank.length - 1){
+      _questionNumber++;}
+    print(_questionNumber);
+    print(_questionBank.length);
+}
+
+
+
+  String getQuestionText(){
+    return _questionBank[_questionNumber].questionText ;
+  }
+
+  bool getCorrectAnswer(){
+    return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionBank.length - 1) {
+      //TODO: Step 3 Part B - Use a print statement to check that isFinished is returning true when you are indeed at the end of the quiz and when a restart should happen.
+
+      print('Now returning true');
+      return true;
+
+    } else {
+      return false;
+    }
+  }
+
+  void reset(){
+    _questionNumber = 0;
+  }
+}
+
+
+
+
+//  List <String> questions = [
+//    'You can lead a cow down stairs but not up stairs.',
+//  'Approximately one quarter of human bones are in the feet.',
+//  'A slug\'s blood is green.',
+//  ];
+//
+//  List <bool> answers = [
+//    false,
+//    true,
+//    true,
+//  ];
